@@ -1,0 +1,2 @@
+rootProject.name='YonkoCameraX'
+include ':app'

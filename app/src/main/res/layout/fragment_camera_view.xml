@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@android:color/white"
+    android:layout_height="match_parent">
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/dlgCameraViewFinder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true" />
+
+    <RelativeLayout
+        android:id="@+id/dlgCameraViewChangeCamera"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_margin="10dp"
+        android:background="@drawable/bg_camera_circle_grey">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            android:src="@drawable/ic_camera_switch" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp">
+
+            <com.sdsmdg.harjot.crollerTest.Croller
+                android:alpha="0.7"
+                android:id="@+id/dlgCameraViewSeekbarZoom"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="10dp"
+                app:back_circle_color="#EDEDED"
+                app:indicator_color="#0B3C49"
+                app:indicator_width="10"
+                app:is_continuous="false"
+                app:label=""
+                app:label_size="0"
+                app:label_color="#FFFFFF"
+                app:main_circle_color="#FFFFFF"
+                app:max="100"
+                app:progress_primary_color="@android:color/black"
+                app:progress_secondary_color="@android:color/white"
+                app:start_offset="45" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/dlgCameraViewICFlash"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@drawable/bg_camera_circle_grey">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:src="@drawable/ic_flashlight" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/dlgCameraViewTakeImage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_margin="20dp"
+        android:background="@drawable/bg_camera_circle_grey">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:src="@drawable/bg_rect_black" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">YonkoCameraX</string>
+    <string name="error_context_is_null">Context must not null</string>
+</resources>

@@ -1,6 +1,7 @@
 package com.yonko.yonkocamerax
 
 import android.content.Context
+import android.net.Uri
 import android.view.MotionEvent
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -102,25 +103,31 @@ class CameraController private constructor(
     }
 
     private fun captureCamera(imageCaptureModel: ImageCaptureModel) {
-        val photoFile = File(
-            imageCaptureModel.fileDirector,
-            imageCaptureModel.fileName + ".jpg"
-        )
-        val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
+//        val photoFile = File(
+//            imageCaptureModel.fileDirector,
+//            imageCaptureModel.fileName + ".jpg"
+//        )
+//        val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
+
+        //trungtd11
+        val fileStorageController = FileStorageController.newInstance(context)
+        val outputOptions = ImageCapture.OutputFileOptions.Builder(fileStorageController.getOutput()).build()
+
 
         imageCapture.takePicture(
             outputOptions,
-            cameraExcutor,
+            ContextCompat.getMainExecutor(context),
             object : ImageCapture.OnImageSavedCallback {
                 override fun onError(exc: ImageCaptureException) {
-                    //Todo callback save image failed
+                    Toast.makeText(context,exc.message, Toast.LENGTH_SHORT).show()
                 }
-
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     //Todo
                     // 1. using canvas draw addtion info over image
                     // 2. callback to controller
+                    val savedUri = Uri.fromFile(fileStorageController.getOutput())
+                    Toast.makeText(context, "Photo Saved$savedUri",Toast.LENGTH_SHORT).show()
                 }
             })
     }
@@ -128,8 +135,8 @@ class CameraController private constructor(
     fun captureCamera() {
         //Todo need to build path
         val imageCaptureModel = ImageCaptureModel()
-        imageCaptureModel.fileDirector = "...."
-        imageCaptureModel.fileName = "Demo"
+//        imageCaptureModel.setFolderName("....")
+//        imageCaptureModel.setFileName("Demo")
         captureCamera(imageCaptureModel)
     }
 

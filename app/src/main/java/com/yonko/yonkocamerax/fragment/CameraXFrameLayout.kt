@@ -56,6 +56,9 @@ class CameraXFrameLayout @JvmOverloads constructor(
         dlgCameraViewFinder.setOnClickListener {
             dlgCameraViewSeekbarZoom.visibility = VISIBLE
         }
+        dlgCameraViewTakeImage.setOnClickListener {
+            cameraController.captureCamera()
+        }
     }
 
     fun enableChangeCamera() {
